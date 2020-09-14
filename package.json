@@ -1,0 +1,32 @@
+{
+  "name": "jsvanilla",
+  "version": "1.0.0",
+  "description": "single page application",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --open --mode development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fercc1097/jsvanilla.git"
+  },
+  "keywords": [
+    "javascript"
+  ],
+  "author": "fercc1097",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fercc1097/jsvanilla/issues"
+  },
+  "homepage": "https://github.com/fercc1097/jsvanilla#readme",
+  "devDependencies": {
+    "@babel/core": "^7.11.5",
+    "babel-loader": "^8.1.0",
+    "copy-webpack-plugin": "^6.1.0",
+    "html-webpack-plugin": "^4.4.1",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  }
+}
