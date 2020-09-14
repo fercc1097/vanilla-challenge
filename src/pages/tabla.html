@@ -1,8 +1,13 @@
-import getData from '../utils/getData';
-
-const Home = async () => {
-    const books = await getData();
-    const view = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../styles/table.css">
+</head>
+<body>
+    
     <h1>Libros</h1>
     <section class="table">
         <div class="table--title">
@@ -30,50 +35,33 @@ const Home = async () => {
                 Acciones
             </p>
         </div>
-
-        ${books.map(book => `
+        <!-- Contneido -->
         <div class="table--content">
             <p>
-                ${book.id}
+                1
             </p>
         </div>
         <div class="table--content">
             <p>
-                ${book.first_name} 
+                Patrick 
             </p>
         </div>
         <div class="table--content">
             <p>
-                ${book.last_name}
+                McGinnis
             </p>
         </div>
         <div class="table--content">
             <p>
-                ${book.book}
+                Emprendedor 10%
             </p>
         </div>
         <div class="table--content table--button">
             <i class="fa fa-pencil" aria-hidden="true"></i>
         </div>
-        `).join('')}
     </section>
+ 
+<script src="https://use.fontawesome.com/2874440a33.js"></script>
 
-    
-    `;
-    return view;
-}
-export default Home;
-
-
-
-    // <div class="Characters">
-    //     ${characters.results.map(character => `
-    //         <article class="Characters-item">
-    //             <a href="#/${character.id}">
-    //                 <img src="${character.image}" alt="name">
-    //                 <h2>${character.name}</h2>
-    //             </a>
-    //         </article>
-    //     `).join('')}
-    
-    // </div>
+</body>
+</html>

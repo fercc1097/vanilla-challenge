@@ -1,7 +1,7 @@
-const API = "https://rickandmortyapi.com/api/character/";
+const API = "https://my.api.mockaroo.com/books.json?key=8feed230";
 
-const getData = async (id) => {
-    const apiURL = id ? `${API}${id}` : API;
+const getData = async () => {
+    const apiURL = API;
     try{
         const response = await fetch(apiURL);
         const data = await response.json();
