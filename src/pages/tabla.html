@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../styles/table.css">
-</head>
-<body>
-    
-    <h1>Libros</h1>
+<h1>Libros</h1>
     <section class="table">
         <div class="table--title">
             <p>
@@ -32,36 +22,46 @@
         </div>
         <div class="table--title">
             <p>
-                Acciones
+                Editar
             </p>
         </div>
-        <!-- Contneido -->
-        <div class="table--content">
+        <div class="table--title">
             <p>
-                1
+                Borrar
             </p>
         </div>
-        <div class="table--content">
-            <p>
-                Patrick 
-            </p>
-        </div>
-        <div class="table--content">
-            <p>
-                McGinnis
-            </p>
-        </div>
-        <div class="table--content">
-            <p>
-                Emprendedor 10%
-            </p>
-        </div>
-        <div class="table--content table--button">
-            <i class="fa fa-pencil" aria-hidden="true"></i>
-        </div>
-    </section>
- 
-<script src="https://use.fontawesome.com/2874440a33.js"></script>
 
-</body>
-</html>
+        ${appData
+          .getData()
+          .map(
+            (book) => `
+        <div class="table--content">
+            <p>
+                ${book.id}
+            </p>
+        </div>
+        <div class="table--content">
+            <p>
+                ${book.first_name} 
+            </p>
+        </div>
+        <div class="table--content">
+            <p>
+                ${book.last_name}
+            </p>
+        </div>
+        <div class="table--content">
+            <p>
+                ${book.book}
+            </p>
+        </div>
+        <div onClick="" class="table--content table--button">
+            <i onClick="" class="fa fa-pencil" aria-hidden="true"></i>
+        </div>
+        <div onClick="
+        ${data.deleteData(book.id)}" class="table--content table--button">
+        <i onClick="appData.deleteData(book.id)" class="fa fa-trash-o" aria-hidden="true"></i>        </div>
+        `
+          )
+          .join("")}
+    </section>
