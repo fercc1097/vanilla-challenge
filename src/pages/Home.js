@@ -5,7 +5,7 @@ const bookHelper = helper();
 
 const Home = async () => {
     let books = []
-
+  if(!localStorage.getItem("localData")) localStorage.setItem("localData",[])
   if(localStorage.getItem("localData").length > 2){
     books = JSON.parse(localStorage.getItem("localData"));
 }else{
