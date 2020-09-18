@@ -15,6 +15,39 @@ const Home = async () => {
   
   const view = `
     <h1>Libros</h1>
+    <div class="buttonsContainer">
+        <button id="addButton"> Añadir Libro</button>
+    </div>
+    <div id="modal" class="modal">
+        <div class="form">
+            <h2 id="formTitle">Nuevo Libro</h2>
+            <div class="formElement">
+                <p class="formLabel">
+                ID:
+                </p>
+                <input id="idInput" class="formInput" type="text" placeholder="ID">
+            </div>
+            <div class="formElement">
+                <p class="formLabel">
+                Nombre:
+                </p>
+                <input id="nombreInput" class="formInput" type="text" placeholder="Nombre">
+            </div>
+            <div class="formElement">
+                <p class="formLabel">
+                Apellido:
+                </p>
+                <input id="apellidoInput" class="formInput" type="text" placeholder="Apellidos">
+            </div>
+            <div class="formElement">
+                <p class="formLabel">
+                Título:
+                </p>
+                <input id="tituloInput" class="formInput" type="text" placeholder="Titulo">
+            </div>    
+            <button class="addButton" id="addButtonForm"> Añadir Libro</button> 
+        </div>
+    </div>
     <section class="table">
         <div class="table--title">
             <p>
@@ -70,8 +103,8 @@ const Home = async () => {
                 ${book.book}
             </p>
         </div>
-        <div id="editCell${book.id}" class="table--content table--button">
-            <i id="edit${book.id}" onClick="" class="fa fa-pencil" aria-hidden="true"></i>
+        <div data-id=${book.id} id="editCell${book.id}" class="table--content table--button button-edit">
+            <i id="edit${book.id}" class="fa fa-pencil" aria-hidden="true"></i>
         </div>
         <div data-id=${book.id} id="deleteCell${book.id}" class="table--content table--button button-delete">
         <i id="delete${book.id}" class="fa fa-trash-o" aria-hidden="true"></i>        </div>

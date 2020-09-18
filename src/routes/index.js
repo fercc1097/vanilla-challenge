@@ -45,7 +45,80 @@ const router = async () => {
         })
     }
 
-    console.log('Hello world')
+    let editButtons = document.getElementsByClassName("button-edit");
+    for (let editButton of editButtons) {
+        editButton.addEventListener("click", function () {
+            const id = document.getElementById(`idCell${this.dataset.id}`).innerText;
+            const firstName = document.getElementById(`firstNameCell${this.dataset.id}`).innerText;
+            const lastName = document.getElementById(`lastNameCell${this.dataset.id}`).innerText;
+            const book = document.getElementById(`bookCell${this.dataset.id}`).innerText;
+            document.getElementById("idInput").value = id;
+            document.getElementById("tituloInput").value = book;
+            document.getElementById("nombreInput").value = firstName;
+            document.getElementById("apellidoInput").value = lastName;
+            openModal(`Editar: ${book}`,()=>{
+                let bookEdited = getFormBook();
+                const dataToBeRemoved = localData.findIndex(i => i.book === book);
+                console.log(dataToBeRemoved)
+                localData.splice(dataToBeRemoved,1)
+                localData.push(bookEdited)
+                localStorage.setItem("localData",JSON.stringify(localData))
+                closeModal();
+                window.location.reload();
+
+            })
+        })
+    }
+
+
+    const addButton = document.getElementById("addButton")
+    addButton.addEventListener('click',()=>{
+    openModal("Nuevo Libro", ()=>{
+        let newBook = getFormBook();
+        console.log(newBook);
+        insertBook(newBook);
+        closeModal()
+    });
+
+    })
+
+    const insertBook = (book)=>{
+        localData.push(book);
+        console.log(localData);
+        localStorage.setItem("localData",JSON.stringify(localData))
+        window.location.reload();
+    }
+
+
+    const getFormBook = () =>{
+        const bookId = document.getElementById("idInput").value;
+        const bookTitulo = document.getElementById("tituloInput").value;
+        const bookNombre = document.getElementById("nombreInput").value;
+        const bookApellido = document.getElementById("apellidoInput").value;
+        let newBook = {"id": parseInt(bookId),
+        "first_name": bookNombre,
+        "last_name": bookApellido,
+        "book": bookTitulo }
+        return newBook;
+    }
+    const closeModal = () =>{
+        let formBook = getFormBook();
+        let modal = document.getElementById("modal");
+        document.getElementById("idInput").value = '';
+        document.getElementById("tituloInput").value = '';
+        document.getElementById("nombreInput").value = '';
+        document.getElementById("apellidoInput").value = '';
+        modal.style.display = "none"
+        return formBook;
+    }
+    const openModal = (title,cb) => {
+        document.getElementById("formTitle").innerText = title;
+        let modal = document.getElementById("modal");
+        modal.style.display = "flex"
+        const formButton = document.getElementById("addButtonForm");
+        formButton.addEventListener('click', cb)
+    }
+
 }
 
 export default router;
