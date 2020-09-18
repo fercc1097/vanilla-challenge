@@ -14,13 +14,14 @@ const routes = {
 const router = async () => {
     const header = null || document.getElementById('header');
     const content = null || document.getElementById('content');
-
+    
     header.innerHTML = await Header();
     let hash = getHash();
     let route = await resolveRoutes(hash);
     let render = routes[route] ? routes[route] : Error404;
     content.innerHTML = await render();
-
+    
+    const localData = JSON.parse(localStorage.getItem("localData"));
     let deleteButtons = document.getElementsByClassName("button-delete");
     for (let deleteButton of deleteButtons) {
         deleteButton.addEventListener("click", function () {
@@ -36,6 +37,11 @@ const router = async () => {
             book.remove();
             edit.remove();
             deleteCell.remove();
+            const dataToBeRemoved = localData.indexOf(this.dataset.id)
+            localData.splice(dataToBeRemoved,1)
+            localStorage.setItem("localData",JSON.stringify(localData))
+            console.log(localStorage.getItem("localData").length)
+            if(localStorage.getItem("localData").length === 2) alert("Ya no hay más elementos")
         })
     }
 

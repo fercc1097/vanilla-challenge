@@ -4,7 +4,15 @@ import helper from "../utils/crudHelper";
 const bookHelper = helper();
 
 const Home = async () => {
-  const books = await getData();
+    let books = []
+
+  if(localStorage.getItem("localData").length > 2){
+    books = JSON.parse(localStorage.getItem("localData"));
+}else{
+      books = await getData();
+      localStorage.setItem("localData", JSON.stringify(books));
+  }
+  
   const view = `
     <h1>Libros</h1>
     <section class="table">
